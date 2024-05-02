@@ -1,20 +1,54 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 import { MONGO_DB_URI } from '../constants';
+import { ProductModel } from '../schemas/product.schema';
+import { faker } from '@faker-js/faker';
+import { IProduct } from '../types';
 
 export const connectToDb = () => {
-  console.log(MONGO_DB_URI)
   mongoose.set('strictQuery', false);
 
-  mongoose.connect(MONGO_DB_URI as string, {
-    serverSelectionTimeoutMS: 5000
-  }).then(() => {
-    console.log('**** CONNECTED WITH DB ****');
-  }).catch(err => {
-    console.log('**** DB CONNECTION FAILURE ****');
-    console.error(err);
-  });
+  mongoose
+    .connect(MONGO_DB_URI as string, {
+      serverSelectionTimeoutMS: 5000,
+    })
+    .then(() => {
+      console.log('**** CONNECTED WITH DB ****');
+    })
+    .catch((err) => {
+      console.log('**** DB CONNECTION FAILURE ****');
+      console.error(err);
+    });
+};
+
+export const createProducts = () => {
+  const products: IProduct[] = [];
+
+  for (let i = 0; i <= 40; i++) {
+    let prod = {
+      id: faker.database.mongodbObjectId(),
+      name: faker.commerce.productName(),
+      image: faker.image.url(),
+      description: faker.commerce.productDescription(),
+      cost: Number(faker.commerce.price()),
+    };
+    products.push(prod);
+  }
+  return products;
+};
+
+export const productsToDb = async () => {
+  try {
+    const dbProducts = await ProductModel.find({});
+    if (!dbProducts.length) {
+      const newProducts = createProducts();
+      await ProductModel.insertMany(newProducts);
+    }
+  } catch (error) {
+    console.log(error);
+    throw new Error(error as string);
+  }
 };
 
 export const removeExtencion = (filename: string) => {
-  return filename.split('.').shift()
-}
+  return filename.split('.').shift();
+};
