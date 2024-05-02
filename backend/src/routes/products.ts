@@ -1,15 +1,19 @@
-import { Router } from 'express'
+import { Router } from 'express';
+import {
+  GetProductByIdController,
+  GetProductsController,
+} from '../controllers/products/GET-products.controller';
 
-const router = Router()
+const router = Router();
 
-router.get('/')
+router.get('/', GetProductsController);
 
-router.get('/:id')
+router.get('/:id', GetProductByIdController);
 
-router.post('/')
+// router.post('/');
 
-router.put('/:id')
+// router.put('/:id');
 
-router.delete('/:id')
+// router.delete('/:id');
 
-export default router
+export default router;

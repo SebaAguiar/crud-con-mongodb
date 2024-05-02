@@ -10,7 +10,7 @@ export const ProductSchema = new Schema({
   image: {
     type: String,
   },
-  descrption: {
+  description: {
     type: String,
   },
   cost: {

@@ -1,18 +1,8 @@
 import { Router } from 'express';
-import fs from 'fs'
-import { removeExtencion } from '../utils/functions';
-import path from 'path';
+import ProductsRouter from './products';
 
-const router = Router()
-const PATH_NAME = __dirname
+const router = Router();
 
-fs.readdirSync(PATH_NAME).filter(file => {
-  const name = removeExtencion(file) 
-  if(name !== 'index'){
-    console.log(`CARGANDO RUTA: ${name}`)
-    const modulePath = path.join(PATH_NAME, file);
-    router.use(`/${name}`, async() =>( await import(modulePath)))
-  }
-})
+router.use('/products', ProductsRouter);
 
-export default router
+export default router;

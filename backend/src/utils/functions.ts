@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import { MONGO_DB_URI } from '../constants';
 import { ProductModel } from '../schemas/product.schema';
 import { faker } from '@faker-js/faker';
-import { IProduct } from '../types';
+import { IProductDTO } from '../types';
 
 export const connectToDb = () => {
   mongoose.set('strictQuery', false);
@@ -21,11 +21,10 @@ export const connectToDb = () => {
 };
 
 export const createProducts = () => {
-  const products: IProduct[] = [];
+  const products: IProductDTO[] = [];
 
   for (let i = 0; i <= 40; i++) {
     let prod = {
-      id: faker.database.mongodbObjectId(),
       name: faker.commerce.productName(),
       image: faker.image.url(),
       description: faker.commerce.productDescription(),
