@@ -4,13 +4,11 @@ const config: Config = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     colors: {
-      dark: {
-        black: '#232323',
-        green: '#55B481',
-        'side-gray': '#444444',
-        gray: '#BBBBBB',
-        white: '#FFFFFF',
-      },
+      black: '#232323',
+      green: '#55B481',
+      'side-gray': '#444444',
+      gray: '#BBBBBB',
+      white: '#FFFFFF',
     },
     extend: {
       textShadow: {
@@ -42,8 +40,6 @@ const config: Config = {
       scrollbar: ['rounded', 'dark', 'thin', 'hidden'],
     },
   },
-  plugins: [
-
-  ],
+  plugins: [],
 };
 export default config;

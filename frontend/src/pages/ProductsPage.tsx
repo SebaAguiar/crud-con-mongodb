@@ -1,11 +1,12 @@
 import React from 'react';
 import ProductsPageContainer from '../components/containers/ProductsPageContainer';
+import ProductsLayout from '../layouts/ProductsLayout';
 
 const ProductsPage = () => {
   return (
-    <main>
+    <ProductsLayout>
       <ProductsPageContainer />
-    </main>
+    </ProductsLayout>
   );
 };
 

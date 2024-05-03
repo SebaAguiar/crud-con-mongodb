@@ -1,10 +1,11 @@
-import React from 'react';
+import ProductDetailContainer from '../components/containers/ProductDetailContainer';
+import ProductsLayout from '../layouts/ProductsLayout';
 
 const ProductDetail = () => {
   return (
-    <div>
-      <h1>Product Detail</h1>
-    </div>
+    <ProductsLayout>
+      <ProductDetailContainer />
+    </ProductsLayout>
   );
 };
 
