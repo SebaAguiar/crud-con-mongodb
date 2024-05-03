@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { API_URL } from '../../constants';
 import { IProducts } from '../../types';
+import DeleteButton from '../DeleteButton';
+import EditButton from '../EditButton';
 
 const ProductDetailContainer = () => {
   const { id } = useParams();
@@ -37,6 +39,10 @@ const ProductDetailContainer = () => {
               $ {product?.cost}
             </p>
           </div>
+        </div>
+        <div>
+          <EditButton id={id as string} />
+          <DeleteButton id={id as string} />
         </div>
       </div>
     </div>

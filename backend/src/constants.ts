@@ -1,7 +1,7 @@
 import { config } from 'dotenv';
 config();
 
-const LOCAL = true;
+const LOCAL = false;
 
 export const PORT = process.env.PORT || 3001;
 
