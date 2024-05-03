@@ -10,6 +10,13 @@ interface IGetsReturns {
   prevPage: number | null;
 }
 
+/**
+ *
+ * @param { String } name
+ * @param { Number } page
+ * @param { Number } limit
+ * @returns
+ */
 export const getProductsByName = async (
   name: string,
   page: number,

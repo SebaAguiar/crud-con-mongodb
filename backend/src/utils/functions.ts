@@ -4,6 +4,9 @@ import { ProductModel } from '../schemas/product.schema';
 import { faker } from '@faker-js/faker';
 import { IProductDTO } from '../types';
 
+/**
+ *
+ */
 export const connectToDb = () => {
   mongoose.set('strictQuery', false);
 
@@ -20,6 +23,10 @@ export const connectToDb = () => {
     });
 };
 
+/**
+ *
+ * @returns { IProductDTO[] }
+ */
 export const createProducts = () => {
   const products: IProductDTO[] = [];
 
@@ -35,6 +42,9 @@ export const createProducts = () => {
   return products;
 };
 
+/**
+ *
+ */
 export const productsToDb = async () => {
   try {
     const dbProducts = await ProductModel.find({});
@@ -48,6 +58,11 @@ export const productsToDb = async () => {
   }
 };
 
+/**
+ *
+ * @param { String } filename
+ * @returns { String }
+ */
 export const removeExtencion = (filename: string) => {
   return filename.split('.').shift();
 };

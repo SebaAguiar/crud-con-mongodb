@@ -1,5 +1,10 @@
 import { ProductModel } from '../../schemas/product.schema';
 
+/**
+ *
+ * @param { String } id
+ * @returns
+ */
 export const deleteOneProduct = async (id: string) => {
   try {
     return await ProductModel.findByIdAndDelete(id);
