@@ -8,6 +8,7 @@ import { ERROR_MESSAGE, NOT_FOUND } from '../../utils/messages';
 
 export const GetProductsController: RequestHandler = async (req, res) => {
   const { name, page = '1', limit = '10' } = req.query;
+
   const pageNumber = Number(page);
   const limitNumber = Number(limit);
   let result;

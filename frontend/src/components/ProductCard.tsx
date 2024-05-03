@@ -7,7 +7,7 @@ interface IProductCardProps {
 
 const ProductCard: React.FC<IProductCardProps> = ({ product }) => {
   return (
-    <div key={product._id} className='w-1/5 h-24 border border-black'>
+    <div key={product._id} className='w-1/5 h-max border border-black m-1'>
       <a href={`/${product._id}`}>
         <figure>
           <img src={product.image} />
