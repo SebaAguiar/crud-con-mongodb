@@ -5,20 +5,21 @@ import {
   getProductsByName,
 } from '../../services/products/get-products.service';
 import { ERROR_MESSAGE, NOT_FOUND } from '../../utils/messages';
-import { IProduct } from '../../types';
 
 export const GetProductsController: RequestHandler = async (req, res) => {
-  const { name } = req.query;
-  let products: IProduct[] = [];
+  const { name, page = '1', limit = '10' } = req.query;
+  const pageNumber = Number(page);
+  const limitNumber = Number(limit);
+  let result;
   try {
     if (name) {
-      products = await getProductsByName(name as string);
+      result = await getProductsByName(name as string, pageNumber, limitNumber);
     } else {
-      products = await getAllProducts();
+      result = await getAllProducts(pageNumber, limitNumber);
     }
-    if (products.length) {
+    if (result.products.length) {
       res.status(200).json({
-        response: products,
+        response: result,
       });
     } else {
       res.status(404).json({
