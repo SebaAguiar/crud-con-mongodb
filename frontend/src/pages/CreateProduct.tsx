@@ -1,10 +1,11 @@
-import React from 'react';
+import CreateProductContainer from '../components/containers/CreateProductContainer';
+import ProductsLayout from '../layouts/ProductsLayout';
 
 const CreateProduct = () => {
   return (
-    <div>
-      <h1>Create Product</h1>
-    </div>
+    <ProductsLayout>
+      <CreateProductContainer />
+    </ProductsLayout>
   );
 };
 
