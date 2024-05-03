@@ -14,7 +14,7 @@ interface IProductsState {
   filterProductsByName: (products: IProducts[]) => void;
   setActualPage: (page: number) => void;
   setTotalPages: (total: number) => void;
-  setHasNextPage: (page: number | null) => void;
+  setNextPage: (page: number | null) => void;
   setPrevPage: (page: number | null) => void;
   setTotalProducts: (total: number) => void;
   setFilteredTotalProducts: (total: number) => void;
@@ -36,7 +36,7 @@ export const useStore = create<IProductsState>((set) => ({
     set(() => ({ products: products })),
   setActualPage: (page: number) => set(() => ({ actualPage: page })),
   setTotalPages: (total: number) => set(() => ({ totalPages: total })),
-  setHasNextPage: (page: number | null) =>
+  setNextPage: (page: number | null) =>
     set(() => ({ nextPage: typeof page === 'number' })),
   setPrevPage: (page: number | null) =>
     set(() => ({ prevPage: typeof page === 'number' })),

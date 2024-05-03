@@ -7,6 +7,7 @@ const Search = () => {
   const filterProductsByName = useStore((state) => state.filterProductsByName);
   const [search, setSearch] = useState('');
   const navigate = useNavigate(); // Añade esta línea
+  const setTotalPages = useStore((state) => state.setTotalPages);
 
   const handleClick = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -14,6 +15,7 @@ const Search = () => {
     const json = await fetchedProducts.json();
     if (json.response.products.length) {
       filterProductsByName(json.response.products);
+      setTotalPages(json.response.totalPages);
     } else {
       navigate('/not-found');
     }

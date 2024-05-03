@@ -6,7 +6,7 @@ import CreateProduct from './pages/CreateProduct';
 
 const App = () => {
   return (
-    <div className='w-screen h-screen'>
+    <div className='max-w-screen h-screen'>
       <Routes>
         <Route path='/' element={<ProductsPage />}></Route>
         <Route path='/:id' element={<ProductDetail />}></Route>
