@@ -1,12 +1,16 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { API_URL } from '../../constants';
+import { useNavigate } from 'react-router-dom';
 
 const CreateProductContainer = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [cost, setCost] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState('');
-  const handleFormSubmit = async () => {
+
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     await fetch(`${API_URL}/products`, {
       method: 'POST',
       headers: {
@@ -19,6 +23,7 @@ const CreateProductContainer = () => {
         description,
       }),
     });
+    navigate('/');
   };
   return (
     <div className='w-full h-full flex items-center justify-center'>

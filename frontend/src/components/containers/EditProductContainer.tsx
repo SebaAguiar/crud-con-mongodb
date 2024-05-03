@@ -22,7 +22,8 @@ const EditProductContainer = () => {
     getProduct();
   }, [product, setProduct, id]);
 
-  const handleFormSubmit = async () => {
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     await fetch(`${API_URL}/products/${id}`, {
       method: 'PUT',
       headers: {
