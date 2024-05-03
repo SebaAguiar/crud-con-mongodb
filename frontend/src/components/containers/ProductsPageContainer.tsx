@@ -17,10 +17,9 @@ const ProductsPageContainer = () => {
     }
   }, [products, setProducts]);
 
-  console.log(products);
   return (
     <>
-      <div className='h-full w-full flex flex-row flex-wrap justify-around'>
+      <div className='h-5/6 w-full flex flex-row flex-wrap justify-around'>
         {products?.map((product) => <ProductCard product={product} />)}
       </div>
     </>
